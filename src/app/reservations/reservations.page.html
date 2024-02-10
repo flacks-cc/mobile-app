@@ -1,0 +1,180 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tabs/services">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Elige un servicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label>¿Qué servicio deseas solicitar?</ion-label>
+      </ion-item>
+      <ion-label color="primary">
+        <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+      </ion-label>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-radio-group>
+          <ion-item>
+            <ion-radio slot="start" value="corte-desvanecido" name="service"></ion-radio>
+            <ion-label>Corte desvanecido</ion-label>
+            <ion-note slot="end">45 - 60 min $100.00 MXN</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-radio slot="start" value="arreglo-de-barba" name="service"></ion-radio>
+            <ion-label>Arreglo de barba</ion-label>
+            <ion-note slot="end">30 min $150.00 MXN</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-radio slot="start" value="corte-escolar" name="service"></ion-radio>
+            <ion-label>Corte escolar</ion-label>
+            <ion-note slot="end">30 min $80.00 MXN</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-radio slot="start" value="afeitado-express" name="service"></ion-radio>
+            <ion-label>Afeitado express</ion-label>
+            <ion-note slot="end">15 - 20 min $90.00 MXN</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-radio slot="start" value="disenos" name="service"></ion-radio>
+            <ion-label>Diseños</ion-label>
+            <ion-note slot="end">El tiempo y el costo dependen del servicio solicitado</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-radio slot="start" value="arreglo-de-ceja" name="service"></ion-radio>
+            <ion-label>Arreglo de ceja</ion-label>
+            <ion-note slot="end">10 min $100.00 MXN</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-radio slot="start" value="mascarilla-facial" name="service"></ion-radio>
+            <ion-label>Mascarilla facial</ion-label>
+            <ion-note slot="end">60 min $130.00 MXN</ion-note>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label>¿En qué fecha y hora te gustaría recoger tu producto?</ion-label>
+      </ion-item>
+      <ion-label color="primary">
+        <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+      </ion-label>
+      <ion-item>
+        <ion-text>Abrimos de lunes a sábado de 10:00 am. a 9:00 pm. y los domingos de 10:00 am. a 3:00 pm.</ion-text>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content class="custom-align">
+      <ion-datetime></ion-datetime>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label>Información de contacto</ion-label>
+      </ion-item>
+      <ion-label color="primary">
+        <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+      </ion-label>
+      <ion-item>
+        <ion-text>Estos detalles se usarán para confirmar tu cita y enviarte un amigable recordatorio.</ion-text>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input type="text" placeholder="Nombre (s)"></ion-input>
+        <ion-icon slot="start" name="person"></ion-icon>
+      </ion-item>
+
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input type="text" placeholder="Apellido paterno"></ion-input>
+        <ion-input type="text" placeholder="Apellido materno"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input type="text" placeholder="Correo electrónico"></ion-input>
+        <ion-icon slot="start" name="mail"></ion-icon>
+      </ion-item>
+
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input type="text" placeholder="Número de teléfono"></ion-input>
+        <ion-icon slot="start" name="call"></ion-icon>
+      </ion-item>
+    </ion-card-content>
+
+    <ion-label color="primary">
+      <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+    </ion-label>
+
+    <ion-item lines="none" class="ion-padding-horizontal ion-margin-bottom">
+      <ion-label>¿Ya tienes una cuenta?</ion-label>
+      <ion-button fill="clear" color="primary" routerLink="/login">Inicia sesión</ion-button>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Flack's Barber Shop</ion-card-title>
+      <ion-card-subtitle>Cerca de, Av 1333, México, 94520 Córdoba, Ver.</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" color="primary" (click)="setOpen(true)">Siguiente</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<!-- Modal -->
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Confirma tu información</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Volver</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-card>
+        <ion-card-header>
+
+          <ion-item class="ion-margin-bottom">
+            <ion-text>Asegúrate de que toda tu información sea correcta y luego haz clic en 'Reservar' para programar tu
+              cita.</ion-text>
+          </ion-item>
+
+          <ion-label color="primary">
+            <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+          </ion-label>
+
+          <ion-card-title>Flack's Barber Shop</ion-card-title>
+          <ion-card-subtitle>Cerca de, Av 1333, México, 94520 Córdoba, Ver.</ion-card-subtitle>
+
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button expand="block" color="primary" id="present-alert">Reservar</ion-button>
+          <ion-alert trigger="present-alert" header="¿Deseas generar tu comprobante de cita?" [buttons]="alertButtons"
+            (didDismiss)="setResult($event)" id="open-toast"></ion-alert>
+          <ion-toast trigger="open-toast" message="Tu comprobante ha sido generado y guardado correctamente"
+            [duration]="5000"></ion-toast>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </ng-template>
+</ion-modal>

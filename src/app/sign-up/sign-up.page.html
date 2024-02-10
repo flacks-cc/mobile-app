@@ -1,0 +1,131 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-img src="assets/img/logo_flacks2.png" class="logo-img ion-margin"></ion-img>
+
+  <ion-text class="ion-text-center ion-margin-bottom">
+    <h1><b>Flack's Cut & Connect</b></h1>
+  </ion-text>
+
+  <ion-text class="ion-text-center ion-margin-bottom">
+    <p class="text">Únete a Flack\'s Cut & Connect hoy mismo</p>
+  </ion-text>
+
+  <ion-item lines="none" class="ion-margin-bottom">
+    <ion-input
+      type="text"
+      placeholder="Nombre (s)"
+      name="nombre"
+      required
+      minlength="2"
+      pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
+      errorText="Nombre invalido"
+      ngModel
+      #nombre="ngModel"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item lines="none" class="ion-margin-bottom">
+    <ion-input
+      type="text"
+      placeholder="Apellido paterno"
+      name="apellidoP"
+      required
+      minlength="2"
+      pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
+      errorText="Apellido invalido"
+      ngModel
+      #apellidos="ngModel"
+    ></ion-input>
+
+    <ion-input
+      type="text"
+      placeholder="Apellido materno"
+      name="apellidoM"
+      required
+      minlength="2"
+      pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
+      errorText="Apellido invalido"
+      ngModel
+      #apellidos="ngModel"
+    ></ion-input>
+  </ion-item>
+  
+  <ion-item lines="none" class="ion-margin-bottom">
+    <ion-input
+      type="text"
+      placeholder="Nombre de usuario"
+      name="username"
+      required
+      minlength="4"
+      errorText="Usuario invalido"
+      ngModel
+      #username="ngModel"
+    ></ion-input>
+    <ion-icon slot="start" name="person"></ion-icon>
+  </ion-item>
+
+  <ion-item lines="none" class="ion-margin-bottom">
+    <ion-input
+      type="email"
+      placeholder="Correo electrónico"
+      name="email"
+      required
+      email
+      errorText="Email invalido"
+      ngModel
+      #email="ngModel"
+    ></ion-input>
+    <ion-icon slot="start" name="mail"></ion-icon>
+  </ion-item>
+
+  <ion-item lines="none" class="ion-margin-bottom">
+    <ion-input
+      type="text"
+      placeholder="Número de teléfono"
+      type="tel"
+      name="telefono"
+      pattern="^[0-9]{10}$"
+      minlength="10"
+      errorText="Teléfono invalido"
+      ngModel
+      #telefono="ngModel"
+    ></ion-input>
+    <ion-icon slot="start" name="call"></ion-icon>
+  </ion-item>
+
+  <ion-item lines="none" class="ion-margin-bottom">
+    <ion-input
+      type="password"
+      placeholder="Contraseña"
+      name="password"
+      required
+      minlength="8"
+      errorText="Contraseña invalida"
+      ngModel
+      #password="ngModel"
+    ></ion-input>
+    <ion-icon slot="start" name="lock-closed"></ion-icon>
+  </ion-item>
+
+  <ion-item lines="none" class="ion-margin-bottom">
+    <ion-input
+      type="password"
+      placeholder="Repetir contraseña"
+      name="confirmPassword"
+      required
+      minlength="8"
+      errorText="Contraseña invalida"
+      ngModel
+      #confirmPassword="ngModel"
+    ></ion-input>
+    <ion-icon slot="start" name="lock-closed"></ion-icon>
+  </ion-item>
+
+  <ion-button expand="block" class="ion-margin-bottom" color="primary" routerLink="/login">Crear cuenta</ion-button>
+
+  <ion-item lines="none" class="ion-margin-bottom" style="--background: transparent;">
+    <ion-label>¿Ya tienes una cuenta?</ion-label>
+    <ion-button fill="clear" color="primary" routerLink="/login">Inicia sesión</ion-button>
+  </ion-item>
+
+</ion-content>

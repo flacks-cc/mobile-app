@@ -4,7 +4,7 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #DAA520;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -74,23 +74,6 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
-
-  /** aplicaciones **/
-  --ion-color-aplicaciones: #BDB647;
-	--ion-color-aplicaciones-rgb: 189,182,71;
-	--ion-color-aplicaciones-contrast: #000000;
-	--ion-color-aplicaciones-contrast-rgb: 0,0,0;
-	--ion-color-aplicaciones-shade: #a6a03e;
-	--ion-color-aplicaciones-tint: #c4bd59;
-}
-
-.ion-color-aplicaciones {
-	--ion-color-base: var(--ion-color-aplicaciones);
-	--ion-color-base-rgb: var(--ion-color-aplicaciones-rgb);
-	--ion-color-contrast: var(--ion-color-aplicaciones-contrast);
-	--ion-color-contrast-rgb: var(--ion-color-aplicaciones-contrast-rgb);
-	--ion-color-shade: var(--ion-color-aplicaciones-shade);
-	--ion-color-tint: var(--ion-color-aplicaciones-tint);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -100,7 +83,7 @@
    */
 
   body {
-    --ion-color-primary: #428cff;
+    --ion-color-primary: #DAA520;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255,255,255;
@@ -250,4 +233,12 @@
 
     --ion-card-background: #1e1e1e;
   }
+}
+
+html {
+  /* 
+   * For more information on dynamic font scaling, visit the documentation:
+   * https://ionicframework.com/docs/layout/dynamic-font-scaling
+   */
+  --ion-dynamic-font: var(--ion-default-dynamic-font);
 }
