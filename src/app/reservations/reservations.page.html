@@ -20,7 +20,7 @@
         <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
       </ion-label>
     </ion-card-header>
-
+  
     <ion-card-content>
       <ion-list>
         <ion-radio-group>
@@ -60,9 +60,13 @@
             <ion-note slot="end">60 min $130.00 MXN</ion-note>
           </ion-item>
         </ion-radio-group>
+        <!-- <ion-text color="danger" *ngIf="!selectedService">
+          Por favor, selecciona un servicio.
+        </ion-text> -->
       </ion-list>
     </ion-card-content>
   </ion-card>
+  
 
   <ion-card>
     <ion-card-header>
@@ -76,11 +80,15 @@
         <ion-text>Abrimos de lunes a sábado de 10:00 am. a 9:00 pm. y los domingos de 10:00 am. a 3:00 pm.</ion-text>
       </ion-item>
     </ion-card-header>
-
+  
     <ion-card-content class="custom-align">
       <ion-datetime></ion-datetime>
+      <!-- <ion-text color="danger" *ngIf="!selectedDateTime">
+        Por favor, selecciona una fecha y hora.
+      </ion-text> -->
     </ion-card-content>
   </ion-card>
+  
 
   <ion-card>
     <ion-card-header>
@@ -94,28 +102,78 @@
         <ion-text>Estos detalles se usarán para confirmar tu cita y enviarte un amigable recordatorio.</ion-text>
       </ion-item>
     </ion-card-header>
-
+  
     <ion-card-content>
       <ion-item lines="none" class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Nombre (s)"></ion-input>
+        <ion-input
+          type="text"
+          placeholder="Nombre(s)"
+          name="nombre"
+          required
+          minlength="8"
+          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
+          errorText="Por favor, ingresa un nombre válido"
+          ngModel
+          #nombre="ngModel"
+        ></ion-input>
         <ion-icon slot="start" name="person"></ion-icon>
       </ion-item>
-
+  
       <ion-item lines="none" class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Apellido paterno"></ion-input>
-        <ion-input type="text" placeholder="Apellido materno"></ion-input>
+        <ion-input
+          type="text"
+          placeholder="Apellido paterno"
+          name="apellidoP"
+          required
+          minlength="8"
+          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
+          errorText="Agrega un apellido válido"
+          ngModel
+          #apellidos="ngModel"
+        ></ion-input>        
+        <ion-input
+          type="text"
+          placeholder="Apellido materno"
+          name="apellidoM"
+          required
+          minlength="8"
+          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
+          errorText="Agrega un apellido válido"
+          ngModel
+          #apellidos="ngModel"
+        ></ion-input>
       </ion-item>
-
+  
       <ion-item lines="none" class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Correo electrónico"></ion-input>
+        <ion-input
+          type="email"
+          placeholder="Correo electrónico"
+          name="email"
+          required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          errorText="Por favor, introduce un correo electrónico válido. Por ejemplo: usuario@ejemplo.com"
+          ngModel
+          #email="ngModel"
+        ></ion-input>        
         <ion-icon slot="start" name="mail"></ion-icon>
       </ion-item>
-
+  
       <ion-item lines="none" class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Número de teléfono"></ion-input>
+        <ion-input
+          type="tel"
+          placeholder="Número de teléfono"
+          name="telefono"
+          pattern="^[0-9]{10}$"
+          maxlength="10"
+          minlength="10"
+          errorText="El número de teléfono debe contener 10 dígitos."
+          ngModel
+          #telefono="ngModel"
+        ></ion-input>        
         <ion-icon slot="start" name="call"></ion-icon>
       </ion-item>
     </ion-card-content>
+  
 
     <ion-label color="primary">
       <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
@@ -168,7 +226,7 @@
 
         </ion-card-header>
         <ion-card-content>
-          <ion-button expand="block" color="primary" id="present-alert">Reservar</ion-button>
+          <ion-button expand="block" color="primary" id="present-alert">Reservar</ion-button>/tabs/home
           <ion-alert trigger="present-alert" header="¿Deseas generar tu comprobante de cita?" [buttons]="alertButtons"
             (didDismiss)="setResult($event)" id="open-toast"></ion-alert>
           <ion-toast trigger="open-toast" message="Tu comprobante ha sido generado y guardado correctamente"

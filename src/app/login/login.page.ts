@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,9 @@ export class LoginPage implements OnInit {
     password: ['', Validators.required],
   });
 
-  constructor(private formBuilder: FormBuilder) { }
+  showError: boolean = false;
+
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
   }
@@ -25,12 +28,11 @@ export class LoginPage implements OnInit {
     return this.loginForm.get('password');
   }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      // Aquí puedes agregar la lógica para enviar el formulario
-      console.log('Formulario válido. Enviar datos...');
+  onSubmit(form: NgForm) {
+    if (!form.valid) {
+      this.showError = true;
     } else {
-      alert('Por favor, verifica los campos del formulario.');
+      this.router.navigateByUrl('/tabs/home');
     }
   }
 }

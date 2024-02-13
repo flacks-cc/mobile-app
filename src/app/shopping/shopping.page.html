@@ -1,13 +1,233 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>shopping</ion-title>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tabs/services">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Elige un producto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">shopping</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label>¿Qué productos deseas apartar?</ion-label>
+      </ion-item>
+      <ion-label color="primary">
+        <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+      </ion-label>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-checkbox slot="start" value="crema-barba"></ion-checkbox>
+          <ion-label>Crema para la barba</ion-label>
+          <ion-note slot="end">Imperial - $100.00 MXN</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox slot="start" value="pomada-barba"></ion-checkbox>
+          <ion-label>Pomada para la barba</ion-label>
+          <ion-note slot="end">Imperial - $100.00 MXN</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox slot="start" value="crema-concha-nacar"></ion-checkbox>
+          <ion-label>Crema</ion-label>
+          <ion-note slot="end">Concha nácar - $80.00 MXN</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox slot="start" value="balsamo-barba"></ion-checkbox>
+          <ion-label>Bálsamo para la barba</ion-label>
+          <ion-note slot="end">Don Porfirio - $100.00 MXN</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox slot="start" value="polvo-voluminizador"></ion-checkbox>
+          <ion-label>Polvo voluminizador</ion-label>
+          <ion-note slot="end">4x4 - $150.00 MXN</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox slot="start" value="fibra-cabello"></ion-checkbox>
+          <ion-label>Fibra para el cabello</ion-label>
+          <ion-note slot="end">Toppik - $80.00 MXN</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox slot="start" value="shampoo-barba"></ion-checkbox>
+          <ion-label>Shampoo para la barba</ion-label>
+          <ion-note slot="end">Grave before shave - $130.00 MXN</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox slot="start" value="cera"></ion-checkbox>
+          <ion-label>Cera</ion-label>
+          <ion-note slot="end">Fisticuffs - $130.00 MXN</ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+    
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label>¿En qué fecha y hora te gustaría recoger tu producto?</ion-label>
+      </ion-item>
+      <ion-label color="primary">
+        <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+      </ion-label>
+      <ion-item>
+        <ion-text>Abrimos de lunes a sábado de 10:00 am. a 9:00 pm. y los domingos de 10:00 am. a 3:00 pm.</ion-text>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content class="custom-align">
+      <ion-datetime></ion-datetime>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label>Información de contacto</ion-label>
+      </ion-item>
+      <ion-label color="primary">
+        <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+      </ion-label>
+      <ion-item>
+        <ion-text>Estos detalles se usarán para confirmar tu reserva del producto.</ion-text>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input
+          type="text"
+          placeholder="Nombre(s)"
+          name="nombre"
+          required
+          minlength="8"
+          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
+          errorText="Por favor, ingresa un nombre válido"
+          ngModel
+          #nombre="ngModel"
+        ></ion-input>
+        <ion-icon slot="start" name="person"></ion-icon>
+      </ion-item>
+  
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input
+          type="text"
+          placeholder="Apellido paterno"
+          name="apellidoP"
+          required
+          minlength="8"
+          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
+          errorText="Agrega un apellido válido"
+          ngModel
+          #apellidos="ngModel"
+        ></ion-input>        
+        <ion-input
+          type="text"
+          placeholder="Apellido materno"
+          name="apellidoM"
+          required
+          minlength="8"
+          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
+          errorText="Agrega un apellido válido"
+          ngModel
+          #apellidos="ngModel"
+        ></ion-input>
+      </ion-item>
+  
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input
+          type="email"
+          placeholder="Correo electrónico"
+          name="email"
+          required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          errorText="Por favor, introduce un correo electrónico válido. Por ejemplo: usuario@ejemplo.com"
+          ngModel
+          #email="ngModel"
+        ></ion-input>        
+        <ion-icon slot="start" name="mail"></ion-icon>
+      </ion-item>
+  
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input
+          type="tel"
+          placeholder="Número de teléfono"
+          name="telefono"
+          pattern="^[0-9]{10}$"
+          maxlength="10"
+          minlength="10"
+          errorText="El número de teléfono debe contener 10 dígitos."
+          ngModel
+          #telefono="ngModel"
+        ></ion-input>        
+        <ion-icon slot="start" name="call"></ion-icon>
+      </ion-item>
+    </ion-card-content>
+
+    <ion-label color="primary">
+      <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+    </ion-label>
+
+    <ion-item lines="none" class="ion-padding-horizontal ion-margin-bottom">
+      <ion-label>¿Ya tienes una cuenta?</ion-label>
+      <ion-button fill="clear" color="primary" routerLink="/login">Inicia sesión</ion-button>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Flack's Barber Shop</ion-card-title>
+      <ion-card-subtitle>Cerca de, Av 1333, México, 94520 Córdoba, Ver.</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" color="primary" (click)="setOpen(true)">Siguiente</ion-button>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
+
+<!-- Modal -->
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Confirma tu información</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Volver</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-card>
+        <ion-card-header>
+
+          <ion-item class="ion-margin-bottom">
+            <ion-text>Asegúrate de que toda tu información sea correcta y luego haz clic en 'Apartar' para programar tu
+              cita.</ion-text>
+          </ion-item>
+
+          <ion-label color="primary">
+            <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+          </ion-label>
+
+          <ion-card-title>Flack's Barber Shop</ion-card-title>
+          <ion-card-subtitle>Cerca de, Av 1333, México, 94520 Córdoba, Ver.</ion-card-subtitle>
+
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button expand="block" color="primary" id="present-alert">Apartar</ion-button>
+          <ion-alert trigger="present-alert" header="¿Deseas generar tu comprobante de cita?" [buttons]="alertButtons"
+            (didDismiss)="setResult($event)" id="open-toast"></ion-alert>
+          <ion-toast trigger="open-toast" message="Tu comprobante ha sido generado y guardado correctamente"
+            [duration]="5000"></ion-toast>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </ng-template>
+</ion-modal>

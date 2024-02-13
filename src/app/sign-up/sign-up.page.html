@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true" class="ion-padding">
 
-  <ion-img src="assets/img/logo_flacks2.png" class="logo-img ion-margin"></ion-img>
+  <ion-img src="assets/img/logo_flacks.png" class="logo-img ion-margin"></ion-img>
 
   <ion-text class="ion-text-center ion-margin-bottom">
     <h1><b>Flack's Cut & Connect</b></h1>
@@ -10,118 +10,64 @@
     <p class="text">Únete a Flack\'s Cut & Connect hoy mismo</p>
   </ion-text>
 
-  <ion-item lines="none" class="ion-margin-bottom">
-    <ion-input
-      type="text"
-      placeholder="Nombre (s)"
-      name="nombre"
-      required
-      minlength="2"
-      pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
-      errorText="Nombre invalido"
-      ngModel
-      #nombre="ngModel"
-    ></ion-input>
-  </ion-item>
+  <form #form="ngForm">
 
-  <ion-item lines="none" class="ion-margin-bottom">
-    <ion-input
-      type="text"
-      placeholder="Apellido paterno"
-      name="apellidoP"
-      required
-      minlength="2"
-      pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
-      errorText="Apellido invalido"
-      ngModel
-      #apellidos="ngModel"
-    ></ion-input>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Nombre (s)" name="nombre" required minlength="4"
+        pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*" errorText="Agrega un nombre valido" ngModel #nombre="ngModel"></ion-input>
+    </ion-item>
 
-    <ion-input
-      type="text"
-      placeholder="Apellido materno"
-      name="apellidoM"
-      required
-      minlength="2"
-      pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
-      errorText="Apellido invalido"
-      ngModel
-      #apellidos="ngModel"
-    ></ion-input>
-  </ion-item>
-  
-  <ion-item lines="none" class="ion-margin-bottom">
-    <ion-input
-      type="text"
-      placeholder="Nombre de usuario"
-      name="username"
-      required
-      minlength="4"
-      errorText="Usuario invalido"
-      ngModel
-      #username="ngModel"
-    ></ion-input>
-    <ion-icon slot="start" name="person"></ion-icon>
-  </ion-item>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Apellido paterno" name="apellidoP" required minlength="4"
+        pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*" errorText="Agrega un apellido valido" ngModel
+        #apellidos="ngModel"></ion-input>
 
-  <ion-item lines="none" class="ion-margin-bottom">
-    <ion-input
-      type="email"
-      placeholder="Correo electrónico"
-      name="email"
-      required
-      email
-      errorText="Email invalido"
-      ngModel
-      #email="ngModel"
-    ></ion-input>
-    <ion-icon slot="start" name="mail"></ion-icon>
-  </ion-item>
+      <ion-input type="text" placeholder="Apellido materno" name="apellidoM" required minlength="2"
+        pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*" errorText="Agrega un apellido valido" ngModel
+        #apellidos="ngModel"></ion-input>
+    </ion-item>
 
-  <ion-item lines="none" class="ion-margin-bottom">
-    <ion-input
-      type="text"
-      placeholder="Número de teléfono"
-      type="tel"
-      name="telefono"
-      pattern="^[0-9]{10}$"
-      minlength="10"
-      errorText="Teléfono invalido"
-      ngModel
-      #telefono="ngModel"
-    ></ion-input>
-    <ion-icon slot="start" name="call"></ion-icon>
-  </ion-item>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Nombre de usuario" name="username" required minlength="4"
+        errorText="Agrega un nombre de usuario valido" ngModel #username="ngModel"></ion-input>
+      <ion-icon slot="start" name="person"></ion-icon>
+    </ion-item>
 
-  <ion-item lines="none" class="ion-margin-bottom">
-    <ion-input
-      type="password"
-      placeholder="Contraseña"
-      name="password"
-      required
-      minlength="8"
-      errorText="Contraseña invalida"
-      ngModel
-      #password="ngModel"
-    ></ion-input>
-    <ion-icon slot="start" name="lock-closed"></ion-icon>
-  </ion-item>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input type="email" placeholder="Correo electrónico" name="email" required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" errorText="Por favor, introduce un correo electrónico válido"
+        ngModel #email="ngModel"></ion-input>
+      <ion-icon slot="start" name="mail"></ion-icon>
+    </ion-item>
 
-  <ion-item lines="none" class="ion-margin-bottom">
-    <ion-input
-      type="password"
-      placeholder="Repetir contraseña"
-      name="confirmPassword"
-      required
-      minlength="8"
-      errorText="Contraseña invalida"
-      ngModel
-      #confirmPassword="ngModel"
-    ></ion-input>
-    <ion-icon slot="start" name="lock-closed"></ion-icon>
-  </ion-item>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Número de teléfono" type="tel" name="telefono" pattern="^[0-9]{10}$"
+        maxlength="10" minlength="10" errorText="El número de teléfono debe contener 10 dígitos." ngModel
+        #telefono="ngModel"></ion-input>
+      <ion-icon slot="start" name="call"></ion-icon>
+    </ion-item>
 
-  <ion-button expand="block" class="ion-margin-bottom" color="primary" routerLink="/login">Crear cuenta</ion-button>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input type="password" placeholder="Contraseña" name="password" required minlength="8" maxlength="16"
+        errorText="La contraseña debe tener entre 8 y 16 caracteres." ngModel #password="ngModel"></ion-input>
+      <ion-icon slot="start" name="lock-closed"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input type="password" placeholder="Repetir contraseña" name="confirmPassword" required minlength="8"
+        maxlength="16" errorText="Contraseña invalida" ngModel #confirmPassword="ngModel"></ion-input>
+      <ion-icon slot="start" name="lock-closed"></ion-icon>
+    </ion-item>
+
+    <ion-button expand="block" class="ion-margin-bottom" color="primary" (click)="checkPasswordsMatch()">Crear
+      cuenta</ion-button>
+
+    <ion-item *ngIf="showError" class="ion-margin-bottom" style="--background: transparent;">
+      <ion-text color="danger">
+        <p>Llena todos los campos primero o verifica que tus contraseñas coincidan</p>
+      </ion-text>
+    </ion-item>
+  </form>
 
   <ion-item lines="none" class="ion-margin-bottom" style="--background: transparent;">
     <ion-label>¿Ya tienes una cuenta?</ion-label>
