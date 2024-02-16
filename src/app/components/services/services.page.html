@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="ion-padding-horizontal">
+    <ion-chip routerLink="/edit-profile">
+      <ion-avatar>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <ion-label>Invitado</ion-label>
+    </ion-chip>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/configuration">
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-row>
+      <!-- Repetir para cada servicio -->
+      <ion-col size="6" size-md="4" size-lg="2" *ngFor="let servicio of servicesData">
+        <ion-card [routerLink]="['/service-details', servicio]">
+          <img [src]="generarRutaImg(servicio.nombre)"/>
+          <ion-card-header>
+            <ion-label>{{ servicio.duracion }}</ion-label>
+            <ion-card-title class="ion-margin-bottom">{{ servicio.nombre }}</ion-card-title>
+            <ion-label>{{ servicio.precio | currency:'MXN' }}</ion-label>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

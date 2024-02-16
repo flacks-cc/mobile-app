@@ -9,23 +9,23 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+        loadChildren: () => import('../components/home/home.module').then(m => m.HomePageModule)
       },
       {
         path: 'products',
-        loadChildren: () => import('../products/products.module').then(m => m.ProductsPageModule)
+        loadChildren: () => import('../components/products/products.module').then(m => m.ProductsPageModule)
       },
       {
         path: 'services',
-        loadChildren: () => import('../services/services.module').then(m => m.ServicesPageModule)
+        loadChildren: () => import('../components/services/services.module').then(m => m.ServicesPageModule)
       },
       {
         path: 'reviews',
-        loadChildren: () => import('../reviews/reviews.module').then(m => m.ReviewsPageModule)
+        loadChildren: () => import('../components/reviews/reviews.module').then(m => m.ReviewsPageModule)
       },
       {
         path: 'history',
-        loadChildren: () => import('../history/history.module').then(m => m.HistoryPageModule)
+        loadChildren: () => import('../components/history/history.module').then(m => m.HistoryPageModule)
       },
       {
         path: '',

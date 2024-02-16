@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./components/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: '',
@@ -29,100 +29,48 @@ const routes: Routes = [
   },
   {
     path: 'configuration',
-    loadChildren: () => import('./configuration/configuration.module').then(m => m.ConfigurationPageModule)
+    loadChildren: () => import('./components/configuration/configuration.module').then(m => m.ConfigurationPageModule)
   },
   {
     path: 'reviews',
-    loadChildren: () => import('./reviews/reviews.module').then(m => m.ReviewsPageModule)
+    loadChildren: () => import('./components/reviews/reviews.module').then(m => m.ReviewsPageModule)
   },
   {
     path: 'history',
-    loadChildren: () => import('./history/history.module').then(m => m.HistoryPageModule)
+    loadChildren: () => import('./components/history/history.module').then(m => m.HistoryPageModule)
   },
   {
     path: 'contact-us',
-    loadChildren: () => import('./contact-us/contact-us.module').then(m => m.ContactUsPageModule)
+    loadChildren: () => import('./components/contact-us/contact-us.module').then(m => m.ContactUsPageModule)
   },
   {
     path: 'find-us',
-    loadChildren: () => import('./find-us/find-us.module').then(m => m.FindUsPageModule)
+    loadChildren: () => import('./components/find-us/find-us.module').then(m => m.FindUsPageModule)
   },
   {
     path: 'edit-profile',
-    loadChildren: () => import('./edit-profile/edit-profile.module').then(m => m.EditProfilePageModule)
+    loadChildren: () => import('./components/edit-profile/edit-profile.module').then(m => m.EditProfilePageModule)
   },
 
   {
     path: 'sign-up',
-    loadChildren: () => import('./sign-up/sign-up.module').then(m => m.SignUpPageModule)
-  },
-  {
-    path: 'desvanecido',
-    loadChildren: () => import('./individual-services/desvanecido/desvanecido.module').then(m => m.DesvanecidoPageModule)
-  },
-  {
-    path: 'crema',
-    loadChildren: () => import('./individual-products/crema/crema.module').then(m => m.CremaPageModule)
+    loadChildren: () => import('./components/sign-up/sign-up.module').then(m => m.SignUpPageModule)
   },
   {
     path: 'reservations',
-    loadChildren: () => import('./reservations/reservations.module').then(m => m.ReservationsPageModule)
+    loadChildren: () => import('./components/reservations/reservations.module').then(m => m.ReservationsPageModule)
   },
   {
     path: 'shopping',
-    loadChildren: () => import('./shopping/shopping.module').then(m => m.ShoppingPageModule)
+    loadChildren: () => import('./components/shopping/shopping.module').then(m => m.ShoppingPageModule)
   },
   {
-    path: 'cera',
-    loadChildren: () => import('./individual-products/cera/cera.module').then(m => m.CeraPageModule)
+    path: 'service-details',
+    loadChildren: () => import('./components/service-details/service-details.module').then(m => m.ServiceDetailsPageModule)
   },
   {
-    path: 'balsamo-barba',
-    loadChildren: () => import('./individual-products/balsamo-barba/balsamo-barba.module').then(m => m.BalsamoBarbaPageModule)
-  },
-  {
-    path: 'fibra',
-    loadChildren: () => import('./individual-products/fibra/fibra.module').then(m => m.FibraPageModule)
-  },
-  {
-    path: 'polvo',
-    loadChildren: () => import('./individual-products/polvo/polvo.module').then(m => m.PolvoPageModule)
-  },
-  {
-    path: 'pomada-barba',
-    loadChildren: () => import('./individual-products/pomada-barba/pomada-barba.module').then(m => m.PomadaBarbaPageModule)
-  },
-  {
-    path: 'shampoo',
-    loadChildren: () => import('./individual-products/shampoo/shampoo.module').then(m => m.ShampooPageModule)
-  },
-  {
-    path: 'crema-barba',
-    loadChildren: () => import('./individual-products/crema-barba/crema-barba.module').then(m => m.CremaBarbaPageModule)
-  },
-  {
-    path: 'afeitado',
-    loadChildren: () => import('./individual-services/afeitado/afeitado.module').then(m => m.AfeitadoPageModule)
-  },
-  {
-    path: 'arreglo-barba',
-    loadChildren: () => import('./individual-services/arreglo-barba/arreglo-barba.module').then(m => m.ArregloBarbaPageModule)
-  },
-  {
-    path: 'arreglo-ceja',
-    loadChildren: () => import('./individual-services/arreglo-ceja/arreglo-ceja.module').then(m => m.ArregloCejaPageModule)
-  },
-  {
-    path: 'corte-escolar',
-    loadChildren: () => import('./individual-services/corte-escolar/corte-escolar.module').then(m => m.CorteEscolarPageModule)
-  },
-  {
-    path: 'disenos',
-    loadChildren: () => import('./individual-services/disenos/disenos.module').then(m => m.DisenosPageModule)
-  },
-  {
-    path: 'mascarilla',
-    loadChildren: () => import('./individual-services/mascarilla/mascarilla.module').then(m => m.MascarillaPageModule)
+    path: 'product-details',
+    loadChildren: () => import('./components/product-details/product-details.module').then(m => m.ProductDetailsPageModule)
   },
 ];
 

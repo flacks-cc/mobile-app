@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tabs/products">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-img [src]="generarRutaImg(producto.nombre)" class="ion-text-center ion-align-items-center"></ion-img>
+    <ion-card-header>
+      <ion-card-title class="ion-margin-top">
+        <ion-text class="ion-margin-start">
+          <b>{{ producto.nombre }}</b>
+        </ion-text>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-text class="ion-margin-right">Valoración: </ion-text>
+        <ion-item>
+          <ion-icon name="star-outline" id="star"></ion-icon>
+          <ion-icon name="star-outline" id="star"></ion-icon>
+          <ion-icon name="star-outline" id="star"></ion-icon>
+          <ion-icon name="star-outline" id="star"></ion-icon>
+          <ion-icon name="star-outline" id="star"></ion-icon>
+        </ion-item>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label color="primary">
+          <b>{{ producto.precio | currency:'MXN' }}</b>
+        </ion-label>
+      </ion-item>
+
+      <ion-label color="primary">
+        <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+      </ion-label>
+
+      <ion-item lines="none">
+        <ion-label><b>{{ producto.marca }}</b></ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-text>
+          {{ producto.descripcion }}
+        </ion-text>
+      </ion-item>
+
+      <ion-button expand="block" class="ion-margin-vertical" color="primary" routerLink="/shopping">
+        Apartar producto
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
