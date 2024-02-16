@@ -226,9 +226,9 @@
 
         </ion-card-header>
         <ion-card-content>
-          <ion-button expand="block" color="primary" id="present-alert">Reservar</ion-button>/tabs/home
+          <ion-button expand="block" color="primary" id="present-alert">Reservar</ion-button>
           <ion-alert trigger="present-alert" header="¿Deseas generar tu comprobante de cita?" [buttons]="alertButtons"
-            (didDismiss)="setResult($event)" id="open-toast"></ion-alert>
+            (didDismiss)="setResult($event)" id="open-toast" (click)="generarPDF()"></ion-alert>
           <ion-toast trigger="open-toast" message="Tu comprobante ha sido generado y guardado correctamente"
             [duration]="5000"></ion-toast>
         </ion-card-content>

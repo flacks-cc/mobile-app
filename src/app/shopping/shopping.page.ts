@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // Importa Router
-import { ModalController } from '@ionic/angular'; // Importa ModalController
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-shopping',
@@ -15,9 +16,9 @@ export class ShoppingPage implements OnInit {
   apellidos: string | null = null;
   email: string | null = null;
   telefono: string | null = null;
-  showError: boolean = false; // Nueva propiedad para rastrear si se debe mostrar el mensaje de error
+  showError: boolean = false;
 
-  constructor(private router: Router, private modalController: ModalController) { } // Inyecta Router y ModalController
+  constructor(private router: Router, private modalController: ModalController) { }
 
   ngOnInit() {
   }
@@ -25,7 +26,7 @@ export class ShoppingPage implements OnInit {
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
     if (isOpen) {
-      this.showError = false; // Restablece showError a false cuando se abren los campos del formulario
+      this.showError = false;
     }
   }
 
@@ -36,9 +37,9 @@ export class ShoppingPage implements OnInit {
 
     if (isServiceSelected && isDateTimeSelected && isContactInfoValid) {
       this.setOpen(true); 
-      this.showError = false; // No muestra el mensaje de error si todos los campos están llenos
+      this.showError = false;
     } else {
-      this.showError = true; // Muestra el mensaje de error si algún campo está vacío
+      this.showError = true;
     }
   }
 
@@ -79,8 +80,8 @@ export class ShoppingPage implements OnInit {
       text: 'No',
       role: 'cancel',
       handler: () => {
-        this.router.navigate(['/tabs/services']); // Navega a /tabs/services si la opción es "No"
-        this.modalController.dismiss(); // Cierra el modal
+        this.router.navigate(['/tabs/services']);
+        this.modalController.dismiss();
         console.log('Alert canceled');
       },
     },
@@ -88,11 +89,17 @@ export class ShoppingPage implements OnInit {
       text: 'Sí',
       role: 'confirm',
       handler: () => {
-        this.router.navigate(['/tabs/home']); // Navega a /tabs/home si la opción es "Sí"
-        this.modalController.dismiss(); // Cierra el modal
+        this.router.navigate(['/tabs/home']);
+        this.modalController.dismiss();
         console.log('Alert confirmed');
       },
     },
   ];
+
+  generarPDF() {
+    const doc = new jsPDF.default();
+    doc.text('Comprobante de cita', 10, 10);
+    doc.save('comprobante_flacks.pdf');
+  }
   
 }
