@@ -1,5 +1,25 @@
 .custom-align {
-    display: flex;
-    justify-content: center;
-  }
-  
+  display: flex;
+  justify-content: center;
+}
+
+ion-item {
+  margin-left: 10px;
+}
+
+.ion-img-center {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.ion-text-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-trash {
+  cursor: pointer;
+}

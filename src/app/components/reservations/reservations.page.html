@@ -1,11 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button routerLink="/tabs/services">
+      <ion-button routerLink="/shopping-cart">
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Elige un servicio</ion-title>
+    <ion-title>Genera tu cita</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,64 +14,53 @@
   <ion-card>
     <ion-card-header>
       <ion-item>
-        <ion-label>¿Qué servicio deseas solicitar?</ion-label>
+        <ion-label>¿Qué deseas solicitar?</ion-label>
       </ion-item>
       <ion-label color="primary">
-        <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+        <div style="border-bottom: 1px solid var(--ion-color-primary);"></div>
       </ion-label>
     </ion-card-header>
-  
-    <ion-card-content>
-      <ion-list>
-        <ion-radio-group>
-          <ion-item>
-            <ion-radio slot="start" value="corte-desvanecido" name="service"></ion-radio>
-            <ion-label>Corte desvanecido</ion-label>
-            <ion-note slot="end">45 - 60 min $100.00 MXN</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-radio slot="start" value="arreglo-de-barba" name="service"></ion-radio>
-            <ion-label>Arreglo de barba</ion-label>
-            <ion-note slot="end">30 min $150.00 MXN</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-radio slot="start" value="corte-escolar" name="service"></ion-radio>
-            <ion-label>Corte escolar</ion-label>
-            <ion-note slot="end">30 min $80.00 MXN</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-radio slot="start" value="afeitado-express" name="service"></ion-radio>
-            <ion-label>Afeitado express</ion-label>
-            <ion-note slot="end">15 - 20 min $90.00 MXN</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-radio slot="start" value="disenos" name="service"></ion-radio>
-            <ion-label>Diseños</ion-label>
-            <ion-note slot="end">El tiempo y el costo dependen del servicio solicitado</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-radio slot="start" value="arreglo-de-ceja" name="service"></ion-radio>
-            <ion-label>Arreglo de ceja</ion-label>
-            <ion-note slot="end">10 min $100.00 MXN</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-radio slot="start" value="mascarilla-facial" name="service"></ion-radio>
-            <ion-label>Mascarilla facial</ion-label>
-            <ion-note slot="end">60 min $130.00 MXN</ion-note>
-          </ion-item>
-        </ion-radio-group>
-        <!-- <ion-text color="danger" *ngIf="!selectedService">
-          Por favor, selecciona un servicio.
-        </ion-text> -->
+
+    <ion-card-content class="ion-no-padding">
+      <ion-list class="ion-no-padding">
+        <ion-card *ngFor="let item of itemsData">
+          <ion-grid>
+            <ion-row>
+              <!-- Columna para la foto -->
+              <ion-col size="4" class="ion-text-center">
+                <ion-img [src]="generarRutaImg(item.nombre, item)" class="ion-img-center"></ion-img>
+              </ion-col>
+              <!-- Columna para el contenido -->
+              <ion-col size="8">
+                <ion-card-content class="ion-no-padding">
+                  <ion-item class="ion-no-padding" lines="none">
+                    <ion-card-title><b>{{ item.nombre }}</b></ion-card-title>
+                    <ion-text slot="end" color="primary">
+                      <p><b>(1)</b></p>
+                    </ion-text>
+                  </ion-item>
+                  <ion-item class="ion-no-padding" lines="none">
+                    <ion-text color="medium">
+                      <p>{{ item.descripcion }}</p>
+                    </ion-text>
+                  </ion-item>
+                  <ion-item class="ion-no-padding" lines="none">
+                    <ion-label>{{ item.precio | currency:'MXN' }}</ion-label>
+                  </ion-item>
+                </ion-card-content>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
       </ion-list>
     </ion-card-content>
   </ion-card>
-  
+
 
   <ion-card>
     <ion-card-header>
       <ion-item>
-        <ion-label>¿En qué fecha y hora te gustaría recoger tu producto?</ion-label>
+        <ion-label>¿En qué fecha y hora te gustaría agendar tu visita?</ion-label>
       </ion-item>
       <ion-label color="primary">
         <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
@@ -80,15 +69,16 @@
         <ion-text>Abrimos de lunes a sábado de 10:00 am. a 9:00 pm. y los domingos de 10:00 am. a 3:00 pm.</ion-text>
       </ion-item>
     </ion-card-header>
-  
+
     <ion-card-content class="custom-align">
-      <ion-datetime></ion-datetime>
+      <ion-datetime [(ngModel)]="fecha_hora" displayFormat="DD/MM/YYYY HH:mm" min="2022-01-01T00:00:00"
+        max="2024-12-31T23:59:59" placeholder="Selecciona fecha y hora"></ion-datetime>
       <!-- <ion-text color="danger" *ngIf="!selectedDateTime">
         Por favor, selecciona una fecha y hora.
       </ion-text> -->
     </ion-card-content>
   </ion-card>
-  
+
 
   <ion-card>
     <ion-card-header>
@@ -102,78 +92,43 @@
         <ion-text>Estos detalles se usarán para confirmar tu cita y enviarte un amigable recordatorio.</ion-text>
       </ion-item>
     </ion-card-header>
-  
+
     <ion-card-content>
       <ion-item lines="none" class="ion-margin-bottom">
-        <ion-input
-          type="text"
-          placeholder="Nombre(s)"
-          name="nombre"
-          required
-          minlength="8"
-          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
-          errorText="Por favor, ingresa un nombre válido"
-          ngModel
-          #nombre="ngModel"
-        ></ion-input>
+        <ion-input type="text" placeholder="Nombre(s)" name="nombre" required minlength="3"
+          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*" errorText="Por favor, ingresa un nombre válido" ngModel
+          [(ngModel)]="nombre"></ion-input>
         <ion-icon slot="start" name="person"></ion-icon>
       </ion-item>
-  
+
       <ion-item lines="none" class="ion-margin-bottom">
-        <ion-input
-          type="text"
-          placeholder="Apellido paterno"
-          name="apellidoP"
-          required
-          minlength="8"
-          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
-          errorText="Agrega un apellido válido"
-          ngModel
-          #apellidos="ngModel"
-        ></ion-input>        
-        <ion-input
-          type="text"
-          placeholder="Apellido materno"
-          name="apellidoM"
-          required
-          minlength="8"
-          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*"
-          errorText="Agrega un apellido válido"
-          ngModel
-          #apellidos="ngModel"
-        ></ion-input>
+        <ion-input type="text" placeholder="Apellido paterno" name="apellidoP" required minlength="3"
+          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*" errorText="Agrega un apellido válido" ngModel
+          [(ngModel)]="apellidoP"></ion-input>
       </ion-item>
-  
+
       <ion-item lines="none" class="ion-margin-bottom">
-        <ion-input
-          type="email"
-          placeholder="Correo electrónico"
-          name="email"
-          required
+        <ion-input type="text" placeholder="Apellido materno" name="apellidoM" required minlength="3"
+          pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]*" errorText="Agrega un apellido válido" ngModel
+          [(ngModel)]="apellidoM"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input type="email" placeholder="Correo electrónico" name="email" required
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-          errorText="Por favor, introduce un correo electrónico válido. Por ejemplo: usuario@ejemplo.com"
-          ngModel
-          #email="ngModel"
-        ></ion-input>        
+          errorText="Por favor, introduce un correo electrónico válido. Por ejemplo: usuario@ejemplo.com" ngModel
+          [(ngModel)]="email"></ion-input>
         <ion-icon slot="start" name="mail"></ion-icon>
       </ion-item>
-  
+
       <ion-item lines="none" class="ion-margin-bottom">
-        <ion-input
-          type="tel"
-          placeholder="Número de teléfono"
-          name="telefono"
-          pattern="^[0-9]{10}$"
-          maxlength="10"
-          minlength="10"
-          errorText="El número de teléfono debe contener 10 dígitos."
-          ngModel
-          #telefono="ngModel"
-        ></ion-input>        
+        <ion-input type="tel" placeholder="Número de teléfono" name="telefono" pattern="^[0-9]{10}$" maxlength="10"
+          minlength="10" errorText="El número de teléfono debe contener 10 dígitos." ngModel
+          [(ngModel)]="telefono"></ion-input>
         <ion-icon slot="start" name="call"></ion-icon>
       </ion-item>
     </ion-card-content>
-  
+
 
     <ion-label color="primary">
       <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
@@ -186,13 +141,7 @@
   </ion-card>
 
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>Flack's Barber Shop</ion-card-title>
-      <ion-card-subtitle>Cerca de, Av 1333, México, 94520 Córdoba, Ver.</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-button expand="block" color="primary" (click)="setOpen(true)">Siguiente</ion-button>
-    </ion-card-content>
+    <ion-button expand="block" color="primary" (click)="setOpen(true)">Siguiente</ion-button>
   </ion-card>
 
 </ion-content>
@@ -200,39 +149,114 @@
 <!-- Modal -->
 <ion-modal [isOpen]="isModalOpen">
   <ng-template>
-    <ion-header>
+    <ion-header [translucent]="true">
       <ion-toolbar>
-        <ion-title>Confirma tu información</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="setOpen(false)">Volver</ion-button>
+        <ion-buttons slot="start">
+          <ion-button (click)="setOpen(false)">
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button>
         </ion-buttons>
+        <ion-title>Confirma tu información</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-card>
+
+      <ion-card id="comprobante">
         <ion-card-header>
-
           <ion-item class="ion-margin-bottom">
-            <ion-text>Asegúrate de que toda tu información sea correcta y luego haz clic en 'Reservar' para programar tu
-              cita.</ion-text>
+            <ion-text>
+              <p>Asegúrate de que toda tu información sea correcta y luego haz clic en 'Aceptar' para programar tu
+                cita.</p>
+            </ion-text>
           </ion-item>
-
           <ion-label color="primary">
             <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
           </ion-label>
 
-          <ion-card-title>Flack's Barber Shop</ion-card-title>
-          <ion-card-subtitle>Cerca de, Av 1333, México, 94520 Córdoba, Ver.</ion-card-subtitle>
+          <ion-card-title class="ion-margin-horizontal">Flack's Barber Shop</ion-card-title>
+          <ion-card-subtitle class="ion-margin-horizontal">Cerca de, Av 1333, México, 94520 Córdoba,
+            Ver.</ion-card-subtitle>
 
         </ion-card-header>
-        <ion-card-content>
-          <ion-button expand="block" color="primary" id="present-alert">Reservar</ion-button>
-          <ion-alert trigger="present-alert" header="¿Deseas generar tu comprobante de cita?" [buttons]="alertButtons"
-            (didDismiss)="setResult($event)" id="open-toast" (click)="generarPDF()"></ion-alert>
-          <ion-toast trigger="open-toast" message="Tu comprobante ha sido generado y guardado correctamente"
-            [duration]="5000"></ion-toast>
+
+        <ion-card-content class="ion-padding">
+          <ion-list>
+
+            <!-- Mostrar el resumen de los servicios -->
+            <ion-card *ngFor="let item of itemsData">
+              <ion-grid>
+                <ion-row>
+                  <!-- Columna para la foto -->
+                  <ion-col size="4" class="ion-text-center">
+                    <ion-img [src]="generarRutaImg(item.nombre, item)" class="ion-img-center"></ion-img>
+                  </ion-col>
+                  <!-- Columna para el contenido -->
+                  <ion-col size="8">
+                    <ion-card-content class="ion-no-padding">
+                      <ion-item class="ion-no-padding" lines="none">
+                        <ion-card-title><b>{{ item.nombre }}</b></ion-card-title>
+                        <ion-text slot="end" color="primary">
+                          <p><b>(1)</b></p>
+                        </ion-text>
+                      </ion-item>
+                      <ion-item class="ion-no-padding" lines="none">
+                        <ion-text color="medium">
+                          <p>{{ item.descripcion }}</p>
+                        </ion-text>
+                      </ion-item>
+                      <ion-item class="ion-no-padding" lines="none">
+                        <ion-label>{{ item.precio | currency:'MXN' }}</ion-label>
+                      </ion-item>
+                    </ion-card-content>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+
+            <!-- Mostrar la fecha y hora seleccionadas -->
+            <ion-item>
+              <ion-label>Fecha y hora:</ion-label>
+              <ion-text slot="end" color="medium">{{ fecha_hora }}</ion-text>
+            </ion-item>
+
+            <!-- Mostrar los datos de contacto -->
+            <ion-item>
+              <ion-label>Nombre:</ion-label>
+              <ion-text slot="end" color="medium">{{ nombre }}</ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-label>Apellido paterno:</ion-label>
+              <ion-text slot="end" color="medium">{{ apellidoP }}</ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-label>Apellido materno:</ion-label>
+              <ion-text slot="end" color="medium">{{ apellidoM }}</ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-label>Correo electrónico:</ion-label>
+              <ion-text slot="end" color="medium">{{ email }}</ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-label>Teléfono:</ion-label>
+              <ion-text slot="end" color="medium">{{ telefono }}</ion-text>
+            </ion-item>
+          </ion-list>
+
+          <ion-button expand="block" color="primary" id="present-alert" class="ion-margin-top" id="open-toast">Aceptar</ion-button>
+          <!-- <ion-alert trigger="present-alert" header="¿Deseas generar tu comprobante de cita?" [buttons]="alertButtons"
+            id="open-toast" (click)="generarPDF()"></ion-alert> -->
+          <!-- <ion-toast trigger="open-toast" message="Tu comprobante ha sido generado y guardado correctamente" -->
+            <ion-toast
+            color="primary"
+            trigger="open-toast"
+            message="Cita programada correctamente"
+            [duration]="7500"
+            [buttons]="toastButtons"
+          ></ion-toast>
+
         </ion-card-content>
       </ion-card>
+
     </ion-content>
   </ng-template>
 </ion-modal>

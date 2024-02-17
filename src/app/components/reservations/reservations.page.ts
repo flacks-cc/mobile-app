@@ -1,25 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import * as jsPDF from 'jspdf';
+import { ShoppingCartDataService } from 'src/app/services/shopping-cart-data/shopping-cart-data.service';
+// import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-reservations',
   templateUrl: './reservations.page.html',
   styleUrls: ['./reservations.page.scss'],
 })
-export class ReservationsPage implements OnInit {
+export class ReservationsPage {
   isModalOpen = false;
-  selectedService: string | null = null;
-  selectedDateTime: string | string[] | null | undefined = null;
+  fecha_hora: string | null = null;
   nombre: string | null = null;
-  apellidos: string | null = null;
+  apellidoP: string | null = null;
+  apellidoM: string | null = null;
   email: string | null = null;
   telefono: string | null = null;
   showError: boolean = false;
 
-  constructor(private router: Router, private modalController: ModalController) { }
-  ngOnInit() {
+  constructor(private router: Router,
+     private modalController: ModalController,
+     private shoppingCartDataService: ShoppingCartDataService) { }
+
+  get itemsData(): any[] {
+    return this.shoppingCartDataService.itemsData;
   }
 
   setOpen(isOpen: boolean) {
@@ -30,11 +35,9 @@ export class ReservationsPage implements OnInit {
   }
 
   nextButtonClick(): void {
-    const isServiceSelected = this.checkServiceSelected();
-    const isDateTimeSelected = this.checkDateTimeSelected();
     const isContactInfoValid = this.checkContactInfo();
 
-    if (isServiceSelected && isDateTimeSelected && isContactInfoValid) {
+    if (isContactInfoValid) {
       this.setOpen(true);
       this.showError = false;
     } else {
@@ -42,63 +45,65 @@ export class ReservationsPage implements OnInit {
     }
   }
 
-  checkServiceSelected(): boolean {
-    if (!this.selectedService) {
-      console.log('Por favor, selecciona un servicio.');
-      return false;
-    }
-    return true;
-  }
-
-  checkDateTimeSelected(): boolean {
-    if (!this.selectedDateTime) {
-      console.log('Por favor, selecciona una fecha y hora.');
-      return false;
-    }
-    return true;
-  }
-
   checkContactInfo(): boolean {
-    if (!this.nombre || !this.apellidos || !this.email || !this.telefono) {
+    if (!this.nombre || !this.apellidoP || !this.apellidoM || !this.email || !this.telefono) {
       console.log('Por favor, completa toda la información de contacto.');
       return false;
     }
     return true;
   }
 
-  setResult(ev: any) {
-    console.log(`Dismissed with role: ${ev.detail.role}`);
-  }
-
   allFieldsFilled(): boolean {
-    return Boolean(this.selectedService && this.selectedDateTime && this.nombre && this.apellidos && this.email && this.telefono);
+    return Boolean(this.nombre && this.apellidoP && this.apellidoM && this.email && this.telefono);
   }
 
-  public alertButtons = [
+  public toastButtons = [
     {
-      text: 'No',
-      role: 'cancel',
+      text: 'Generar comprobante',
       handler: () => {
-        this.router.navigate(['/tabs/services']);
-        this.modalController.dismiss();
-        console.log('Alert canceled');
+        console.log('Generar comprobante');
       },
-    },
-    {
-      text: 'Sí',
-      role: 'confirm',
-      handler: () => {
-        this.router.navigate(['/tabs/home']);
-        this.modalController.dismiss();
-        console.log('Alert confirmed');
-      },
-    },
+    }
   ];
 
-  generarPDF() {
-    const doc = new jsPDF.default();
-    doc.text('Comprobante de cita', 10, 10);
-    doc.save('comprobante_flacks.pdf');
+  // Función para generar la ruta de la imagen basada en el nombre del servicio o producto
+  generarRutaImg(nombre: string, item: any): string {
+    const imgNombre = item.nombre.toLowerCase().replace(/\s+/g, '_') + '.png';
+    const rutaServicio = `assets/img/services/${imgNombre}`;
+    const rutaProducto = `assets/img/products/${imgNombre}`;
+    
+    const imgServicio = new Image();
+    imgServicio.src = rutaServicio;
+    
+    if (imgServicio.complete) {
+      return rutaServicio;
+    }
+    
+    const imgProducto = new Image();
+    imgProducto.src = rutaProducto;
+    
+    if (imgProducto.complete) {
+      return rutaProducto;
+    }
+    
+    return '';
   }
 
+  generarPDF() {
+    const content = document.getElementById('comprobante'); // Obtener el elemento con el id 'comprobante'
+    
+    // Configurar las opciones para la generación del PDF
+    const options = {
+      margin: 1,
+      filename: 'comprobante_flacks.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+  
+    // Generar el PDF
+    // html2pdf().from(content).set(options).save();
+  }
+  
 }
+

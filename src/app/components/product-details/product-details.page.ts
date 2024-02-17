@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ShoppingCartDataService } from 'src/app/services/shopping-cart-data/shopping-cart-data.service';
 
 @Component({
   selector: 'app-product-details',
@@ -10,7 +11,11 @@ export class ProductDetailsPage implements OnInit {
 
   producto: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private shoppingCartDataService: ShoppingCartDataService
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -18,9 +23,17 @@ export class ProductDetailsPage implements OnInit {
     });
   }
 
-    // Función para generar la ruta de la imagen basada en el nombre del producto
-    generarRutaImg(nombre: string): string {
-      const imgNombre = nombre.toLowerCase().replace(/\s+/g, '_') + '.png';
-      return `assets/img/products/${imgNombre}`;
+  // Función para generar la ruta de la imagen basada en el nombre del producto
+  generarRutaImg(nombre: string): string {
+    const imgNombre = nombre.toLowerCase().replace(/\s+/g, '_') + '.png';
+    return `assets/img/products/${imgNombre}`;
+  }
+
+  // Método para agregar el servicio al carrito de compras
+  agregarAlCarrito() {
+    if (this.producto) {
+      this.shoppingCartDataService.addItem(this.producto);
+      this.router.navigateByUrl('/shopping-cart');
     }
+  }
 }

@@ -19,5 +19,4 @@ export class ServicesPage {
     const imgNombre = nombre.toLowerCase().replace(/\s+/g, '_') + '.png';
     return `assets/img/services/${imgNombre}`;
   }
-
 }

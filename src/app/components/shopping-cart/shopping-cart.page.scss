@@ -1,5 +1,5 @@
-ion-img {
-    margin-right: 10px;
+ion-item {
+    margin-left: 10px;
 }
 
 .ion-img-center {
@@ -13,4 +13,8 @@ ion-img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.btn-trash {
+    cursor: pointer;
 }

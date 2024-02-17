@@ -51,9 +51,15 @@
         </ion-text>
       </ion-item>
 
-      <ion-button expand="block" class="ion-margin-vertical" color="primary" routerLink="/shopping">
-        Apartar producto
+      <ion-button expand="block" class="ion-margin-vertical ion-padding-horizontal" color="primary" id="open-toast"
+        (click)="agregarAlCarrito()">
+        <ion-icon slot="end" name="cart"></ion-icon>
+        Añadir al carrito
       </ion-button>
+
+      <ion-toast trigger="open-toast" message="Tu producto ha sido agregado al carrito correctamente"
+        [duration]="2500"></ion-toast>
+
     </ion-card-content>
   </ion-card>
 </ion-content>
