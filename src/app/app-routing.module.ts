@@ -61,10 +61,6 @@ const routes: Routes = [
     loadChildren: () => import('./components/reservations/reservations.module').then(m => m.ReservationsPageModule)
   },
   {
-    path: 'shopping',
-    loadChildren: () => import('./components/shopping/shopping.module').then(m => m.ShoppingPageModule)
-  },
-  {
     path: 'service-details',
     loadChildren: () => import('./components/service-details/service-details.module').then(m => m.ServiceDetailsPageModule)
   },

@@ -10,7 +10,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <ion-card>
     <ion-card-header>
       <ion-item>
@@ -28,7 +27,7 @@
             <ion-row>
               <!-- Columna para la foto -->
               <ion-col size="4" class="ion-text-center">
-                <ion-img [src]="generarRutaImg(item.nombre, item)" class="ion-img-center"></ion-img>
+                <ion-img [src]="generarRutaImg(item.nombre)" class="ion-img-center"></ion-img>
               </ion-col>
               <!-- Columna para el contenido -->
               <ion-col size="8">
@@ -56,7 +55,6 @@
     </ion-card-content>
   </ion-card>
 
-
   <ion-card>
     <ion-card-header>
       <ion-item>
@@ -78,7 +76,6 @@
       </ion-text> -->
     </ion-card-content>
   </ion-card>
-
 
   <ion-card>
     <ion-card-header>
@@ -143,7 +140,6 @@
   <ion-card>
     <ion-button expand="block" color="primary" (click)="setOpen(true)">Siguiente</ion-button>
   </ion-card>
-
 </ion-content>
 
 <!-- Modal -->
@@ -159,9 +155,9 @@
         <ion-title>Confirma tu información</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
 
-      <ion-card id="comprobante">
+    <ion-content>
+      <ion-card>
         <ion-card-header>
           <ion-item class="ion-margin-bottom">
             <ion-text>
@@ -181,14 +177,13 @@
 
         <ion-card-content class="ion-padding">
           <ion-list>
-
             <!-- Mostrar el resumen de los servicios -->
             <ion-card *ngFor="let item of itemsData">
               <ion-grid>
                 <ion-row>
                   <!-- Columna para la foto -->
                   <ion-col size="4" class="ion-text-center">
-                    <ion-img [src]="generarRutaImg(item.nombre, item)" class="ion-img-center"></ion-img>
+                    <ion-img [src]="generarRutaImg(item.nombre)" class="ion-img-center"></ion-img>
                   </ion-col>
                   <!-- Columna para el contenido -->
                   <ion-col size="8">
@@ -224,39 +219,78 @@
               <ion-label>Nombre:</ion-label>
               <ion-text slot="end" color="medium">{{ nombre }}</ion-text>
             </ion-item>
+
             <ion-item>
               <ion-label>Apellido paterno:</ion-label>
               <ion-text slot="end" color="medium">{{ apellidoP }}</ion-text>
             </ion-item>
+
             <ion-item>
               <ion-label>Apellido materno:</ion-label>
               <ion-text slot="end" color="medium">{{ apellidoM }}</ion-text>
             </ion-item>
+
             <ion-item>
               <ion-label>Correo electrónico:</ion-label>
               <ion-text slot="end" color="medium">{{ email }}</ion-text>
             </ion-item>
+
             <ion-item>
               <ion-label>Teléfono:</ion-label>
               <ion-text slot="end" color="medium">{{ telefono }}</ion-text>
             </ion-item>
           </ion-list>
 
-          <ion-button expand="block" color="primary" id="present-alert" class="ion-margin-top" id="open-toast">Aceptar</ion-button>
+          <ion-button expand="block" color="primary" id="present-alert" class="ion-margin-top"
+            id="open-toast">Aceptar</ion-button>
           <!-- <ion-alert trigger="present-alert" header="¿Deseas generar tu comprobante de cita?" [buttons]="alertButtons"
             id="open-toast" (click)="generarPDF()"></ion-alert> -->
           <!-- <ion-toast trigger="open-toast" message="Tu comprobante ha sido generado y guardado correctamente" -->
-            <ion-toast
-            color="primary"
-            trigger="open-toast"
-            message="Cita programada correctamente"
-            [duration]="7500"
-            [buttons]="toastButtons"
-          ></ion-toast>
+          <ion-toast color="primary" trigger="open-toast" message="Cita programada correctamente" [duration]="7500"
+            [buttons]="toastButtons" id="open-toast2"></ion-toast>
 
+            <ion-toast trigger="open-toast2" message="Espera unos segundos, por favor" [duration]="2500"></ion-toast>
         </ion-card-content>
       </ion-card>
-
     </ion-content>
   </ng-template>
 </ion-modal>
+
+<!-- Elementos para el comprobante -->
+<div id="element-to-print">
+  <table style="width: 100%; border-collapse: collapse;">
+    <!-- Mostrar el resumen de los servicios -->
+    <tr *ngFor="let item of itemsData">
+      <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+        <div style="display: flex; align-items: center;">
+          <!-- Columna para el contenido -->
+          <div style="flex: 1; padding-left: 20px;">
+            <div style="font-weight: bold; color: #333;">{{ item.nombre }}</div>
+            <div style="color: #666;">{{ item.descripcion }}</div>
+            <div>{{ item.precio | currency:'MXN' }}</div>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <!-- Mostrar la fecha y hora seleccionadas -->
+    <tr>
+      <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+        <div style="font-weight: bold; color: #333;">Fecha y hora:</div>
+        <div style="color: #666;">{{ fecha_hora }}</div>
+      </td>
+    </tr>
+
+    <!-- Mostrar los datos de contacto -->
+    <tr>
+      <td style="padding: 10px;">
+        <div style="font-weight: bold; color: #333;">Información de contacto</div>
+        <div>Nombre: <span style="color: #666;">{{ nombre }}</span></div>
+        <div>Apellido paterno: <span style="color: #666;">{{ apellidoP }}</span></div>
+        <div>Apellido materno: <span style="color: #666;">{{ apellidoM }}</span></div>
+        <div>Correo electrónico: <span style="color: #666;">{{ email }}</span></div>
+        <div>Teléfono: <span style="color: #666;">{{ telefono }}</span></div>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -26,7 +26,7 @@ export class ProductDetailsPage implements OnInit {
   // Función para generar la ruta de la imagen basada en el nombre del producto
   generarRutaImg(nombre: string): string {
     const imgNombre = nombre.toLowerCase().replace(/\s+/g, '_') + '.png';
-    return `assets/img/products/${imgNombre}`;
+    return `assets/img/items/${imgNombre}`;
   }
 
   // Método para agregar el servicio al carrito de compras

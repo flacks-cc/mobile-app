@@ -17,6 +17,6 @@ export class ServicesPage {
   // Función para generar la ruta de la imagen basada en el nombre del servicio
   generarRutaImg(nombre: string): string {
     const imgNombre = nombre.toLowerCase().replace(/\s+/g, '_') + '.png';
-    return `assets/img/services/${imgNombre}`;
+    return `assets/img/items/${imgNombre}`;
   }
 }
