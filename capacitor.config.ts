@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'ionic-lab',
+  appId: 'com.flacks.app',
+  appName: "Flack's Cut & Connect",
   webDir: 'www',
   server: {
     androidScheme: 'https'

@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonInput } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,39 +8,66 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./sign-up.page.scss'],
 })
 export class SignUpPage implements OnInit {
-  @ViewChild('nombre') nombreInput!: IonInput;
-  @ViewChild('apellidos') apellidosInput!: IonInput;
-  @ViewChild('username') usernameInput!: IonInput;
-  @ViewChild('email') emailInput!: IonInput;
-  @ViewChild('telefono') telefonoInput!: IonInput;
-  @ViewChild('password') passwordInput!: IonInput;
-  @ViewChild('confirmPassword') confirmPasswordInput!: IonInput;
 
-  showError: boolean = false;
+  titulo = 'Agregar usuario';
+  submitted = false;
+  formUsuario: FormGroup;
+  idCliente: any | null;
 
-  constructor(private router: Router) { }
-
-  ngOnInit() {
+  constructor(public fb: FormBuilder,
+    private router: Router,
+    private aRoute: ActivatedRoute) {
+    this.formUsuario = this.fb.group({
+      nombre: ['', [Validators.required, Validators.pattern('[A-Za-zÁ-Úá-ú ]+')]],
+      apellidoPaterno: ['', [Validators.required, Validators.pattern('[A-Za-zÁ-Úá-ú]+')]],
+      apellidoMaterno: ['', Validators.pattern('[A-Za-zÁ-Úá-ú]+')],
+      nombreUsuario: ['', Validators.required]
+    });
+    // this.idCliente = this.aRoute.snapshot.paramMap.get('idCliente');
   }
 
-  checkPasswordsMatch(): void {
-    if (this.nombreInput.value && this.apellidosInput.value && this.usernameInput.value && this.emailInput.value && this.telefonoInput.value && this.passwordInput.value && this.confirmPasswordInput.value) {
-      if (this.passwordInput.value !== this.confirmPasswordInput.value) {
-        this.showError = true;
-      } else {
-        this.showError = false;
-        this.router.navigate(['/login']);
-      }
-    } else {
-      this.showError = true;
+  ngOnInit(): void {
+    this.agregarUsuario();
+  }
+
+  agregarUsuario() {
+
+    // Marcar todos los controles como "touched" para que las validaciones se activen
+    this.formUsuario.markAllAsTouched();
+
+    // Valida que todos los campos del formulario sean correctos
+    this.submitted = true;
+    if (this.formUsuario.invalid) {
+      return;
     }
   }
 
-  // onSubmit(form: NgForm) {
-  //   if (!form.valid) {
-  //     this.showError = true;
-  //   } else {
-  //     this.router.navigateByUrl('/tabs/home');
-  //   }
-  // }
+  // Validaciones
+  getErrorText(fieldName: string): string {
+    const field = this.formUsuario.get(fieldName);
+
+    // Validaciones de campos obligatorios
+    if (field?.hasError('required')) {
+      if (fieldName === 'nombre') {
+        return 'Su nombre es obligatorio.';
+      } else if (fieldName === 'apellidoPaterno') {
+        return 'Su apellido paterno es obligatorio.';
+      } else if (fieldName === 'nombreUsuario') {
+        return 'Su nombre de usuario es obligatorio.';
+      }
+    }
+
+    // Validaciones de solo texto
+    if (field?.hasError('pattern')) {
+      if (fieldName === 'nombre') {
+        return 'Su nombre solo puede contener letras.';
+      } else if (fieldName === 'apellidoPaterno') {
+        return 'Su apellido paterno solo puede contener letras.';
+      } else if (fieldName === 'apellidoMaterno') {
+        return 'Su apellido materno solo puede contener letras.';
+      }
+    }
+
+    return '';
+  }
 }

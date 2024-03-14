@@ -10,9 +10,9 @@
     <p class="text">La aplicación móvil oficial de Flack's Barber Shop</p>
   </ion-text>
 
-  <ion-item lines="none" class="ion-margin-bottom" style="--background: transparent;">
-    <ion-button fill="clear" color="primary" routerLink="/tabs/home">¿Deseas continuar como invitado?</ion-button>
-  </ion-item>
+  <ion-button fill="clear" class="ion-margin-bottom" expand="block" color="primary"routerLink="/tabs/home">
+    ¿Deseas continuar como invitado?
+  </ion-button>
 
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
 
@@ -31,9 +31,12 @@
     </ion-item>
 
 
-    <ion-item lines="none" class="ion-margin-bottom" style="--background: transparent;">
-      <ion-checkbox slot="start"></ion-checkbox>
+    <ion-item lines="none" class="ion-no-padding transparent">
+      <ion-checkbox slot="start" class="ion-no-margin chk"></ion-checkbox>
       <ion-text>Recuérdame</ion-text>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-margin-bottom ion-no-padding transparent">
       <ion-button slot="end" fill="clear" color="primary">¿Olvidaste tu contraseña?</ion-button>
     </ion-item>
 
@@ -46,16 +49,19 @@
       Iniciar sesión con Google
     </ion-button>
 
-    <ion-item *ngIf="showError" class="ion-margin-bottom" style="--background: transparent;">
+    <ion-item *ngIf="showError" class="ion-margin-bottom transparent">
       <ion-text color="danger">
         <p>Llena todos los campos primero o verifica que tus datos sean correctos</p>
       </ion-text>
     </ion-item>
   </form>
 
-  <ion-item lines="none" class="ion-margin-bottom" style="--background: transparent;">
+  <ion-item lines="none" class="ion-no-padding ion-text-center transparent">
     <ion-label>¿No tienes una cuenta?</ion-label>
-    <ion-button fill="clear" color="primary" routerLink="/sign-up">Regístrate</ion-button>
   </ion-item>
+
+  <ion-button fill="clear" expand="block" color="primary" routerLink="/sign-up">
+    Regístrate
+  </ion-button>
 
 </ion-content>

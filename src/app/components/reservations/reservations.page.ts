@@ -34,28 +34,28 @@ export class ReservationsPage {
     }
   }
 
-  // nextButtonClick(): void {
-  //   const isContactInfoValid = this.checkContactInfo();
+  nextButtonClick(): void {
+    const isContactInfoValid = this.checkContactInfo();
 
-  //   if (isContactInfoValid) {
-  //     this.setOpen(true);
-  //     this.showError = false;
-  //   } else {
-  //     this.showError = true;
-  //   }
-  // }
+    if (isContactInfoValid) {
+      this.setOpen(true);
+      this.showError = false;
+    } else {
+      this.showError = true;
+    }
+  }
 
-  // checkContactInfo(): boolean {
-  //   if (!this.nombre || !this.apellidoP || !this.apellidoM || !this.email || !this.telefono) {
-  //     console.log('Por favor, completa toda la información de contacto.');
-  //     return false;
-  //   }
-  //   return true;
-  // }
+  checkContactInfo(): boolean {
+    if (!this.nombre || !this.apellidoP || !this.apellidoM || !this.email || !this.telefono) {
+      console.log('Por favor, completa toda la información de contacto.');
+      return false;
+    }
+    return true;
+  }
 
-  // allFieldsFilled(): boolean {
-  //   return Boolean(this.nombre && this.apellidoP && this.apellidoM && this.email && this.telefono);
-  // }
+  allFieldsFilled(): boolean {
+    return Boolean(this.nombre && this.apellidoP && this.apellidoM && this.email && this.telefono);
+  }
 
   public toastButtons = [
     {
