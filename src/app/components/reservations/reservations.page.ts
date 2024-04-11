@@ -18,10 +18,21 @@ export class ReservationsPage {
   email: string | null = null;
   telefono: string | null = null;
   showError: boolean = false;
+  idTicket: number = 1;
+  monto_total: number = 0;
+  monto_pagado: number = 0;
+  cambio: number = 0;
+  metodo_pago: string = 'efectivo';
+  nombre_empleado: string = 'Bet-birai Guzmán Juárez';
+  nombre_barbero: string = 'Michel Aldahir Reyes Salazar';
 
   constructor(private router: Router,
     private modalController: ModalController,
-    private shoppingCartDataService: ShoppingCartDataService) { }
+    private shoppingCartDataService: ShoppingCartDataService) {
+
+      this.idTicket = 1;
+
+     }
 
   get itemsData(): any[] {
     return this.shoppingCartDataService.itemsData;
@@ -77,15 +88,16 @@ export class ReservationsPage {
   generarPDF() {
     var element = document.getElementById('element-to-print');
     var opt = {
-      margin: 1,
-      filename: 'comprobante_flacks.pdf',
-      image: { type: 'pmg', quality: 0.98 },
+      margin: 2,
+      filename: `comprobante_flacks.pdf`, // Usar el idTicket actual en el nombre del archivo
+      // image: { type: 'pmg', quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
     // New Promise-based usage:
     html2pdf().from(element).set(opt).save();
+    this.idTicket++; // Incrementar el idTicket actual
   }
 
 }

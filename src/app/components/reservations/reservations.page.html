@@ -183,7 +183,7 @@
                 <ion-row>
                   <!-- Columna para la foto -->
                   <ion-col size="4" class="ion-text-center">
-                    <ion-img [src]="generarRutaImg(item.nombre)" class="ion-img-center"></ion-img>
+                    <!-- <ion-img [src]="generarRutaImg(item.nombre)" class="ion-img-center"></ion-img> -->
                   </ion-col>
                   <!-- Columna para el contenido -->
                   <ion-col size="8">
@@ -247,7 +247,7 @@
           <ion-toast color="primary" trigger="open-toast" message="Cita programada correctamente" [duration]="7500"
             [buttons]="toastButtons" id="open-toast2"></ion-toast>
 
-            <ion-toast trigger="open-toast2" message="Espera unos segundos, por favor" [duration]="3000"></ion-toast>
+          <ion-toast trigger="open-toast2" message="Espera unos segundos, por favor" [duration]="3000"></ion-toast>
         </ion-card-content>
       </ion-card>
     </ion-content>
@@ -257,38 +257,55 @@
 <!-- Elementos para el comprobante -->
 <div id="element-to-print">
   <table style="width: 100%; border-collapse: collapse;">
+    <tr style="padding: 10px; border-bottom: 1px solid; align-items: center; justify-content: center;">
+      <div style="font-weight: bold; color: #333;" class="line">
+        <h3>FLACK'S BARBER SHOP</h3>
+      </div>
+    </tr>
+    <tr>
+      <td style="padding: 10px">
+        <div style="color: #333;">Id de facturación: {{ idTicket }}</div>
+      </td>
+    </tr>
+    <!-- Mostrar el método de pago y montos -->
+    <tr>
+      <td style="padding: 10px">
+        <div style="color: #333;">Monto total: {{ monto_total }}</div>
+        <div style="color: #333;">Monto pagado: {{ monto_pagado }}</div>
+        <div style="color: #333;">Cambio: {{ cambio }}</div>
+        <div style="color: #333;">Método de pago: {{ metodo_pago }}</div>
+      </td>
+    </tr>
+    <!-- Mostrar empleado que recibe el pago -->
+    <tr>
+      <td style="padding: 10px; border-bottom: 1px solid;">
+        <div style="color: #333;">Empleado que recibió el pago: {{ nombre_empleado }}</div>
+      </td>
+    </tr>
+    <!-- Mostrar la fecha y hora seleccionadas -->
+    <tr>
+      <td style="padding: 10px; border-bottom: 1px solid;">
+        <div style="color: #333;">Fecha de reservación: {{ fecha_hora }}</div>
+      </td>
+    </tr>
     <!-- Mostrar el resumen de los servicios -->
     <tr *ngFor="let item of itemsData">
       <td style="padding: 10px; border-bottom: 1px solid;">
         <div style="display: flex; align-items: center;">
           <!-- Columna para el contenido -->
           <div style="flex: 1; padding-left: 20px;">
-            <div style="font-weight: bold; color: #333;">{{ item.nombre }}</div>
-            <div><img [src]="generarRutaImg(item.nombre)"></div>
-            <div style="color: #333;">{{ item.descripcion }}</div>
-            <div>{{ item.precio | currency:'MXN' }}</div>
+            <div style="color: #333;">Nombre: {{ item.nombre }}</div>
+            <!-- <div><img [src]="generarRutaImg(item.nombre)"></div> -->
+            <div style="color: #333;">Precio: {{ item.precio | currency:'MXN' }}</div>
           </div>
         </div>
       </td>
     </tr>
-
-    <!-- Mostrar la fecha y hora seleccionadas -->
-    <tr>
-      <td style="padding: 10px; border-bottom: 1px solid;">
-        <div style="font-weight: bold; color: #333;">Fecha y hora:</div>
-        <div style="color: #333;">{{ fecha_hora }}</div>
-      </td>
-    </tr>
-
-    <!-- Mostrar los datos de contacto -->
+    <!-- Mostrar los datos del barbero seleccionado -->
     <tr>
       <td style="padding: 10px;">
-        <div style="font-weight: bold; color: #333;">Información de contacto</div>
-        <div style="color: #333;">Nombre: <span>{{ nombre }}</span></div>
-        <div style="color: #333;">Apellido paterno: <span>{{ apellidoP }}</span></div>
-        <div style="color: #333;">Apellido materno: <span>{{ apellidoM }}</span></div>
-        <div style="color: #333;">Correo electrónico: <span>{{ email }}</span></div>
-        <div style="color: #333;">Teléfono: <span>{{ telefono }}</span></div>
+        <div style="font-weight: bold; color: #333;">Barbero asignado:</div>
+        <div style="color: #333;">- Nombre: {{ nombre_barbero }}</div>
       </td>
     </tr>
   </table>

@@ -24,6 +24,21 @@ ion-item {
   cursor: pointer;
 }
 
+.line {
+  text-align: center;
+  margin-bottom: 20px; /* Ajusta el espacio entre la línea y el texto */
+}
+
+.line::before,
+.line::after {
+  content: "";
+  display: inline-block;
+  width: 50%; /* Ajusta la longitud de la línea */
+  margin: 0 10px; /* Ajusta el espacio entre la línea y el texto */
+  border-top: 1px solid black; /* Establece el color y grosor de la línea */
+}
+
+
 // #element-to-print div {
 //   display: none;
 // }
