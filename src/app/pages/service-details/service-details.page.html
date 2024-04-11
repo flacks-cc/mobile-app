@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-img [src]="generarRutaImg(servicio.nombre)" class="ion-text-center ion-align-items-center"></ion-img>
+    <ion-card-header>
+      <ion-card-title class="ion-margin-top">
+        <ion-text class="ion-margin-start">
+          <b>{{ servicio.nombre }}</b>
+        </ion-text>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-text class="ion-margin-right">Valoración: </ion-text>
+        <ion-item>
+          <ion-icon name="star-outline" id="star"></ion-icon>
+          <ion-icon name="star-outline" id="star"></ion-icon>
+          <ion-icon name="star-outline" id="star"></ion-icon>
+          <ion-icon name="star-outline" id="star"></ion-icon>
+          <ion-icon name="star-outline" id="star"></ion-icon>
+        </ion-item>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label color="primary">
+          <b>{{ servicio.precio | currency:'MXN' }}</b>
+        </ion-label>
+      </ion-item>
+
+      <ion-label color="primary">
+        <div style="border-bottom: 1px solid var(--ion-color-primary); margin-bottom: 10px;"></div>
+      </ion-label>
+
+      <ion-item lines="none">
+        <ion-label><b>{{ servicio.duracion }}</b></ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-text>
+          {{ servicio.descripcion }}
+        </ion-text>
+      </ion-item>
+
+      <ion-button expand="block" class="ion-margin-vertical ion-padding-horizontal" color="primary" id="open-toast"
+        (click)="agregarAlCarrito()">
+        <ion-icon slot="end" name="cart"></ion-icon>
+        Añadir al carrito
+      </ion-button>
+
+      <ion-toast trigger="open-toast" message="Tu producto ha sido agregado al carrito correctamente"
+            [duration]="2500"></ion-toast>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

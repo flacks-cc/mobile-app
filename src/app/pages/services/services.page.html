@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <!-- Repetir para cada servicio -->
+      <ion-col size="6" size-md="4" size-lg="2" *ngFor="let servicio of servicesData">
+        <ion-card [routerLink]="['/service-details', servicio]">
+          <img [src]="generarRutaImg(servicio.nombre)" />
+          <ion-card-header>
+            <ion-label>{{ servicio.duracion }}</ion-label>
+            <ion-card-title class="ion-margin-bottom">{{ servicio.nombre }}</ion-card-title>
+            <ion-label>{{ servicio.precio | currency:'MXN' }}</ion-label>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

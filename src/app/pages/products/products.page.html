@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <!-- Repetir para cada producto -->
+      <ion-col size="6" size-md="4" size-lg="2" *ngFor="let producto of productsData">
+        <ion-card [routerLink]="['/product-details', producto]">
+          <img [src]="generarRutaImg(producto.nombre)" />
+          <ion-card-header>
+            <ion-label>{{ producto.marca }}</ion-label>
+            <ion-card-title class="ion-margin-bottom">{{ producto.nombre }}</ion-card-title>
+            <ion-label>{{ producto.precio | currency:'MXN' }}</ion-label>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

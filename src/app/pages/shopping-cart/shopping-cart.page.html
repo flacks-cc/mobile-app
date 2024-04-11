@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+<ion-content [fullscreen]="true">
+  <!-- Contenido principal -->
+  <ion-card *ngFor="let item of itemsData">
+    <ion-grid>
+      <ion-row>
+        <!-- Columna para la foto -->
+        <ion-col size="4" class="ion-text-center">
+          <ion-img [src]="generarRutaImg(item.nombre)" class="ion-img-center"></ion-img>
+        </ion-col>
+        <!-- Columna para el contenido -->
+        <ion-col size="8">
+          <ion-card-content class="ion-no-padding">
+            <ion-item class="ion-no-padding" lines="none">
+              <ion-card-title><b>{{ item.nombre }}</b></ion-card-title>
+              <ion-text slot="end" color="primary">
+                <p><b>(1)</b></p>
+              </ion-text>
+            </ion-item>
+            <ion-item class="ion-no-padding" lines="none">
+              <ion-text color="medium">
+                <p>{{ item.descripcion }}</p>
+              </ion-text>
+            </ion-item>
+            <ion-item class="ion-no-padding" lines="none">
+              <ion-label color="primary">{{ item.precio | currency:'MXN' }}</ion-label>
+              <ion-icon class="btn-trash" color="danger" name="trash"  (click)="eliminarItem(item)"></ion-icon>
+            </ion-item>
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-button expand="block" class="ion-margin" color="primary" routerLink="/reservations">
+    Adquirir
+  </ion-button>
+
+</ion-content>

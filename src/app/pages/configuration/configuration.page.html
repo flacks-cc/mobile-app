@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <!-- Título de la sección de configuración -->
+    <ion-card-header>
+      <ion-card-title>Configuración</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-label>En esta sección, tendrás la oportunidad de personalizar la configuración de tu aplicación.</ion-label>
+
+      <!-- Opción para activar/desactivar el modo oscuro -->
+      <ion-item>
+        <ion-icon name="moon" slot="start"></ion-icon>
+        <ion-label>Modo oscuro</ion-label>
+        <ion-toggle slot="end"></ion-toggle>
+      </ion-item>
+
+      <!-- Opción para activar/desactivar notificaciones -->
+      <ion-item>
+        <ion-icon name="notifications" slot="start"></ion-icon>
+        <ion-label>Notificaciones</ion-label>
+        <ion-toggle slot="end"></ion-toggle>
+      </ion-item>
+
+      <!-- Botón para editar perfil -->
+      <ion-item routerLink="/edit-profile">
+        <ion-icon name="create" slot="start"></ion-icon>
+        <ion-label>Editar perfil</ion-label>
+        <ion-icon name="chevron-forward" slot="end"></ion-icon>
+      </ion-item>
+
+      <!-- Botón para hacer logout -->
+      <ion-item routerLink="/login">
+        <ion-icon name="log-out" slot="start"></ion-icon>
+        <ion-label>Cerrar sesión</ion-label>
+        <ion-icon name="chevron-forward" slot="end"></ion-icon>
+      </ion-item>
+
+      <!-- Botón para acceder al soporte -->
+      <!-- <ion-item routerLink="/support">
+        <ion-icon name="help" slot="start"></ion-icon>
+        <ion-label>Soporte</ion-label>
+        <ion-icon name="chevron-forward" slot="end"></ion-icon>
+      </ion-item> -->
+    </ion-card-content>
+  </ion-card>
+
+  <!-- CEMMT Icon -->
+  <!-- <ion-img [src]="cemmtIconPath" class="cemmt-icon"></ion-img> -->
+
+</ion-content>
+ 

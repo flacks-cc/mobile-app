@@ -1,0 +1,36 @@
+img {
+  width: 45%;
+  margin-top: 16px;
+}
+
+ion-col {
+  text-align: center;
+}
+
+.container-grid {
+  height: 90vh;
+  /* Establecer la altura del grid al 100% de la altura de la pantalla */
+}
+
+.container-row {
+  height: 100%;
+  /* Cada fila ocupa todo el alto del grid */
+}
+
+.container-col {
+  height: 33.33%;
+  /* Cada columna ocupa un tercio del alto de la fila */
+}
+
+.card-content {
+  height: 100%;
+  /* Ajustar la altura de la tarjeta al 100% del contenedor */
+  display: flex;
+  /* Activar el modelo de caja flexible */
+  flex-direction: column;
+  /* Alinear el contenido en columnas */
+  justify-content: center;
+  /* Centrar verticalmente el contenido */
+  align-items: center;
+  /* Centrar horizontalmente el contenido */
+}
