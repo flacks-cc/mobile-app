@@ -20,7 +20,7 @@
       <ion-input type="email" placeholder="Correo electrónico" name="email" required
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" errorText="Por favor, introduce un correo electrónico válido"
         ngModel #email="ngModel"></ion-input>
-      <ion-icon slot="start" name="person"></ion-icon>
+      <ion-icon slot="start" name="mail"></ion-icon>
     </ion-item>
 
 
@@ -31,14 +31,16 @@
     </ion-item>
 
 
-    <ion-item lines="none" class="ion-no-padding transparent">
+    <ion-item lines="none" class="ion-no-padding transparent ion-text-center">
       <ion-checkbox slot="start" class="ion-no-margin chk"></ion-checkbox>
-      <ion-text>Recuérdame</ion-text>
+      <ion-label>Recuérdame</ion-label>
     </ion-item>
+    
 
-    <ion-item lines="none" class="ion-margin-bottom ion-no-padding transparent">
-      <ion-button slot="end" fill="clear" color="primary">¿Olvidaste tu contraseña?</ion-button>
-    </ion-item>
+    <ion-button fill="clear" class="ion-margin-bottom" expand="block" color="primary">
+      ¿Olvidaste tu contraseña?
+    </ion-button>
+  
 
     <ion-button expand="block" class="ion-margin-bottom" color="primary" type="submit">
       Iniciar sesión
