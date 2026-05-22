@@ -1,14 +1,19 @@
-<h1 align="center">📱 Flack's Cut & Connect — Mobile App (PWA)</h1>
+# Flack's Cut & Connect — Mobile App (PWA)
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Angular-18-DD0031?logo=angular&logoColor=white" alt="Angular">
+  <img src="https://img.shields.io/badge/Ionic-8-4584FF?logo=ionic&logoColor=white" alt="Ionic">
+  <img src="https://img.shields.io/badge/License-GPL_v3-0298c3?logo=gnu&logoColor=white" alt="GPL v3">
+</p>
 
 <p align="center">
   <em>Customer-facing hybrid mobile app for service reservations, product catalog, and reviews</em>
 </p>
 
 <p align="center">
-  <a href="https://img.shields.io/badge/Angular-18-DD0031?logo=angular&logoColor=white"><img src="https://img.shields.io/badge/Angular-18-DD0031?logo=angular&logoColor=white" alt="Angular"></a>
-  <a href="https://img.shields.io/badge/Ionic-8-4584FF?logo=ionic&logoColor=white"><img src="https://img.shields.io/badge/Ionic-8-4584FF?logo=ionic&logoColor=white" alt="Ionic"></a>
-  <a href="https://img.shields.io/badge/License-GPL_v3-0298c3?logo=gnu&logoColor=white"><img src="https://img.shields.io/badge/License-GPL_v3-0298c3?logo=gnu&logoColor=white" alt="GPL v3"></a>
-  <a href="https://img.shields.io/badge/Status-Active-2ea44f"><img src="https://img.shields.io/badge/Status-Active-2ea44f" alt="Active"></a>
+  <a href="https://github.com/flacks-cc/mobile-app">Repository</a>
+  ·
+  <a href="https://github.com/flacks-cc/mobile-app/issues">Report Bug</a>
 </p>
 
 <p align="center">
@@ -17,7 +22,18 @@
 
 ---
 
-## 🚀 Quick Start
+## About Flack's Cut & Connect
+
+Hybrid mobile application (PWA) built with Angular and Ionic, designed for barbershop clients. Enables service reservations, product browsing, review management, and account management.
+
+## Features
+
+- Browse services and products
+- Make reservations
+- Leave reviews
+- Manage account
+
+## Quick Start
 
 ### Prerequisites
 
@@ -25,7 +41,7 @@
 - Ionic CLI
 - Angular CLI
 
-### Installation
+### Setup
 
 ```bash
 git clone https://github.com/flacks-cc/mobile-app.git
@@ -34,45 +50,35 @@ npm install
 ionic serve
 ```
 
-## 🧩 Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Framework | Angular 18 |
-| Mobile | Ionic 8, Capacitor |
-| Language | TypeScript |
-| Auth | JWT |
-
-## 📂 Project Structure
+## Architecture
 
 ```
-mobile-app/
-├── src/
-│   ├── app/
-│   ├── assets/
-│   ├── theme/
-│   └── ...
-├── capacitor.config.ts
-├── ionic.config.json
-└── README.md
+(TBD)
 ```
 
-## 🤝 Contributing
+## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for branch naming, commit conventions, and PR workflow.
 
-## 📄 License
+## License
 
-GPL v3 — see [LICENSE](LICENSE).
+This project is licensed under the GPL v3 — see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 **Authors:**
 
-- [@chrisssp](https://github.com/chrisssp) — Developer
+- Serrano Puertos Jorge Christian
+- Chávez Moreno José Eduardo
+- Fernández López Kevin Noé
+- Florentino Altamirano Misrael
+- Ortiz Pérez Alejandro
+- Moises Torres Bernabé
 
----
+**Advisors:**
 
-<p align="center">
-  <sub>Built with ❤️ by the flacks-cc team · 2026</sub>
-</p>
+- (TBD)
+
+**Academic Support:**
+
+- (TBD)
