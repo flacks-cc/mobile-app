@@ -1,8 +1,12 @@
 {
-  "name": "ionic-lab",
+  "name": "flacks-cc-mobile-app",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "description": "Customer-facing hybrid PWA for service reservations, product catalog, and reviews (Angular, Ionic, Capacitor, TypeScript)",
+  "author": {
+    "name": "flacks-cc",
+    "email": "chrisssp.dev@gmail.com"
+  },
+  "homepage": "https://chrisssp.vercel.app/en/projects/flacks-cc",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -66,6 +70,5 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "ts-node": "^8.3.0",
     "typescript": "~5.0.2"
-  },
-  "description": "An Ionic project"
+  }
 }
