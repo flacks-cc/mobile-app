@@ -48,12 +48,6 @@ npm install
 ionic serve
 ```
 
-## Arquitectura
-
-```
-(Pendiente)
-```
-
 ## Contribuciones
 
 Lee [CONTRIBUTING.md](CONTRIBUTING.md) para conocer las convenciones de ramas, commits y PRs.
